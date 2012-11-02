@@ -62,7 +62,7 @@ class CollectionOfValidator extends ConstraintValidator
             $namespaceStripper = function($fqcn) {return join('', array_slice(explode('\\', $fqcn), -1)); };
 
             $objInterfaces    = array_map($namespaceStripper, class_implements($obj));
-            $objClassName     = array_map($namespaceStripper, get_class($obj));
+            $objClassName     = $namespaceStripper(get_class($obj));
             $objParentClasses = array_map($namespaceStripper, class_parents($obj));
         }
 
